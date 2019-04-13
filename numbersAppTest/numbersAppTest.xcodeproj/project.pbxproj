@@ -54,14 +54,38 @@
 		51AB94AB22623FC700AC9A15 /* numbersAppTest */ = {
 			isa = PBXGroup;
 			children = (
-				51AB94AC22623FC700AC9A15 /* AppDelegate.swift */,
-				51AB94AE22623FC700AC9A15 /* ViewController.swift */,
-				51AB94B022623FC700AC9A15 /* Main.storyboard */,
-				51AB94B322623FC800AC9A15 /* Assets.xcassets */,
-				51AB94B522623FC800AC9A15 /* LaunchScreen.storyboard */,
 				51AB94B822623FC800AC9A15 /* Info.plist */,
+				51AB94BF2262402900AC9A15 /* MainFiles */,
+				51AB94C02262404E00AC9A15 /* Resources */,
+				51AB94BE2262400500AC9A15 /* ViewControllers */,
 			);
 			path = numbersAppTest;
+			sourceTree = "<group>";
+		};
+		51AB94BE2262400500AC9A15 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				51AB94AE22623FC700AC9A15 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		51AB94BF2262402900AC9A15 /* MainFiles */ = {
+			isa = PBXGroup;
+			children = (
+				51AB94B522623FC800AC9A15 /* LaunchScreen.storyboard */,
+				51AB94B022623FC700AC9A15 /* Main.storyboard */,
+				51AB94AC22623FC700AC9A15 /* AppDelegate.swift */,
+			);
+			path = MainFiles;
+			sourceTree = "<group>";
+		};
+		51AB94C02262404E00AC9A15 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				51AB94B322623FC800AC9A15 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
