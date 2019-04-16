@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e7e-UM-pLE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="e7e-UM-pLE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,6 +13,10 @@
         <scene sceneID="VHc-Zr-vCB">
             <objects>
                 <viewController id="ABS-OW-9Mt" customClass="DetailViewController" customModule="numbersAppTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zYU-1t-Pc6"/>
+                        <viewControllerLayoutGuide type="bottom" id="KzX-r5-IyA"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="z94-ZC-aTa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,10 +30,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cQc-Wx-gs5" firstAttribute="top" secondItem="Anf-rE-adl" secondAttribute="top" constant="28" id="lQk-ba-UiT"/>
-                            <constraint firstItem="cQc-Wx-gs5" firstAttribute="leading" secondItem="Anf-rE-adl" secondAttribute="leading" constant="16" id="ywD-qW-SeC"/>
+                            <constraint firstItem="cQc-Wx-gs5" firstAttribute="top" secondItem="zYU-1t-Pc6" secondAttribute="bottom" constant="28" id="lQk-ba-UiT"/>
+                            <constraint firstItem="cQc-Wx-gs5" firstAttribute="leading" secondItem="z94-ZC-aTa" secondAttribute="leading" constant="16" id="ywD-qW-SeC"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Anf-rE-adl"/>
                     </view>
                     <navigationItem key="navigationItem" id="slE-P1-nnn"/>
                 </viewController>
@@ -128,6 +130,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TF8-LC-paA"/>
+        <segue reference="Adx-B0-CFh"/>
     </inferredMetricsTieBreakers>
 </document>
