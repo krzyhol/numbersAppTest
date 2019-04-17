@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SplitDelegate: UISplitViewControllerDelegate {
+final class SplitDelegate: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {        
         return true
     }

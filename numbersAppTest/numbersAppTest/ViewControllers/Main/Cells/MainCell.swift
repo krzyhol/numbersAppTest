@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainCell: UITableViewCell {
+final class MainCell: UITableViewCell {
 
     @IBOutlet private weak var titleLabel: UILabel!
     
@@ -42,19 +42,14 @@ class MainCell: UITableViewCell {
     private func setCellState(highlighted: Bool = false, selected: Bool = false) {
         switch (highlighted, selected) {
         case (true, _):
-            let backgroundColorView = UIView()
-            backgroundColorView.backgroundColor = CellContraint.highlightedBackgroundColor
-            selectedBackgroundView = backgroundColorView
+            setSelectedBackgroundColor(CellContraint.highlightedBackgroundColor)
             titleLabel.textColor = CellContraint.highlightedAndSelectedTextColor
         case (false, true):
-            let backgroundColorView = UIView()
-            backgroundColorView.backgroundColor = CellContraint.selectedBackgroundColor
-            selectedBackgroundView = backgroundColorView
+            setSelectedBackgroundColor(CellContraint.selectedBackgroundColor)
             titleLabel.textColor = CellContraint.highlightedAndSelectedTextColor
         default:
             backgroundColor = CellContraint.normalBackgroundColor
             titleLabel.textColor = CellContraint.normalTextColor
         }
     }
-    
 }

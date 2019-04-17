@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
     
     @IBOutlet private weak var textLabel: UILabel? {
         didSet {
@@ -16,7 +16,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    var number: Int? {
+    private var number: Int? {
         didSet {
             textLabel?.text = "\(number ?? -1)"
         }

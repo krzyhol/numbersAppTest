@@ -17,6 +17,8 @@
 		51DC84D72264F7C10014435F /* UISplitViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84D62264F7C10014435F /* UISplitViewControllerExtension.swift */; };
 		51DC84DC2267833D0014435F /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84DA2267833D0014435F /* MainCell.swift */; };
 		51DC84DD2267833D0014435F /* MainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51DC84DB2267833D0014435F /* MainCell.xib */; };
+		51DC84DF2267AC630014435F /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84DE2267AC630014435F /* UITableViewCellExtension.swift */; };
+		51DC84E12267AC8E0014435F /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84E02267AC8E0014435F /* UITableViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		51DC84D62264F7C10014435F /* UISplitViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISplitViewControllerExtension.swift; sourceTree = "<group>"; };
 		51DC84DA2267833D0014435F /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		51DC84DB2267833D0014435F /* MainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCell.xib; sourceTree = "<group>"; };
+		51DC84DE2267AC630014435F /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
+		51DC84E02267AC8E0014435F /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				51DC84D62264F7C10014435F /* UISplitViewControllerExtension.swift */,
+				51DC84DE2267AC630014435F /* UITableViewCellExtension.swift */,
+				51DC84E02267AC8E0014435F /* UITableViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -210,7 +216,9 @@
 				51AB94C22262426E00AC9A15 /* MainViewController.swift in Sources */,
 				51AB94C722624D0A00AC9A15 /* SplitDelegate.swift in Sources */,
 				51DC84DC2267833D0014435F /* MainCell.swift in Sources */,
+				51DC84E12267AC8E0014435F /* UITableViewExtension.swift in Sources */,
 				51DC84D72264F7C10014435F /* UISplitViewControllerExtension.swift in Sources */,
+				51DC84DF2267AC630014435F /* UITableViewCellExtension.swift in Sources */,
 				51AB94AF22623FC700AC9A15 /* DetailViewController.swift in Sources */,
 				51AB94AD22623FC700AC9A15 /* AppDelegate.swift in Sources */,
 			);

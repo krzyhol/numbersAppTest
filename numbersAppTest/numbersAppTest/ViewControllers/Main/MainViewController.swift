@@ -12,14 +12,14 @@ protocol MainViewControllerDelegate: class {
     func numberSelected(_ number: Int)
 }
 
-class MainViewController: UIViewController {
-    let numbers = [1, 2, 3, 4, 5]
+final class MainViewController: UIViewController {
+    private let numbers = [1, 2, 3, 4, 5]
     
-    @IBOutlet var tableView: UITableView! {
+    @IBOutlet private var tableView: UITableView! {
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
-            tableView.register(UINib(nibName: "MainCell", bundle: nil), forCellReuseIdentifier: "MainCell")
+            tableView.registerCells([MainCell.self])
         }
     }
     
@@ -36,8 +36,9 @@ class MainViewController: UIViewController {
         splitViewController?.enablePortainPadFullscreenMode(to: toInterfaceOrientation, for: UIDevice.current.userInterfaceIdiom)
     }
     
-    func selectFirstRow() {
+    private func selectFirstRow() {
         guard numbers.count != 0 else { return }
+        
         let firstObjectIndexPath = IndexPath(row: 0, section: 0)
         tableView.selectRow(at: firstObjectIndexPath, animated: false, scrollPosition: .top)
         delegate?.numberSelected(numbers[firstObjectIndexPath.row])
@@ -51,7 +52,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as? MainCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MainCell.self), for: indexPath) as? MainCell else { return UITableViewCell() }
         cell.decorateCell("\(numbers[indexPath.row])")
         return cell
     }
