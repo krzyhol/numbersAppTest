@@ -9,8 +9,24 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    
+    @IBOutlet private weak var textLabel: UILabel? {
+        didSet {
+            textLabel?.text = "\(number ?? -1)"
+        }
+    }
+    
+    var number: Int? {
+        didSet {
+            textLabel?.text = "\(number ?? -1)"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+        navigationItem.leftItemsSupplementBackButton = true
     }
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
@@ -18,3 +34,8 @@ class DetailViewController: UIViewController {
     }
 }
 
+extension DetailViewController: MainViewControllerDelegate {
+    func numberSelected(_ number: Int) {
+        self.number = number
+    }
+}

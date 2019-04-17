@@ -15,6 +15,8 @@
 		51AB94C22262426E00AC9A15 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AB94C12262426E00AC9A15 /* MainViewController.swift */; };
 		51AB94C722624D0A00AC9A15 /* SplitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AB94C622624D0A00AC9A15 /* SplitDelegate.swift */; };
 		51DC84D72264F7C10014435F /* UISplitViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84D62264F7C10014435F /* UISplitViewControllerExtension.swift */; };
+		51DC84DC2267833D0014435F /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84DA2267833D0014435F /* MainCell.swift */; };
+		51DC84DD2267833D0014435F /* MainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51DC84DB2267833D0014435F /* MainCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		51AB94C12262426E00AC9A15 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		51AB94C622624D0A00AC9A15 /* SplitDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitDelegate.swift; sourceTree = "<group>"; };
 		51DC84D62264F7C10014435F /* UISplitViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISplitViewControllerExtension.swift; sourceTree = "<group>"; };
+		51DC84DA2267833D0014435F /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		51DC84DB2267833D0014435F /* MainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +77,7 @@
 		51AB94BE2262400500AC9A15 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				51AB94C12262426E00AC9A15 /* MainViewController.swift */,
+				51DC84D8226783090014435F /* Main */,
 				51AB94AE22623FC700AC9A15 /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
@@ -111,6 +115,24 @@
 				51DC84D62264F7C10014435F /* UISplitViewControllerExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		51DC84D8226783090014435F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				51DC84D9226783180014435F /* Cells */,
+				51AB94C12262426E00AC9A15 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		51DC84D9226783180014435F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				51DC84DA2267833D0014435F /* MainCell.swift */,
+				51DC84DB2267833D0014435F /* MainCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +195,7 @@
 			files = (
 				51AB94B722623FC800AC9A15 /* LaunchScreen.storyboard in Resources */,
 				51AB94B422623FC800AC9A15 /* Assets.xcassets in Resources */,
+				51DC84DD2267833D0014435F /* MainCell.xib in Resources */,
 				51AB94B222623FC700AC9A15 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +209,7 @@
 			files = (
 				51AB94C22262426E00AC9A15 /* MainViewController.swift in Sources */,
 				51AB94C722624D0A00AC9A15 /* SplitDelegate.swift in Sources */,
+				51DC84DC2267833D0014435F /* MainCell.swift in Sources */,
 				51DC84D72264F7C10014435F /* UISplitViewControllerExtension.swift in Sources */,
 				51AB94AF22623FC700AC9A15 /* DetailViewController.swift in Sources */,
 				51AB94AD22623FC700AC9A15 /* AppDelegate.swift in Sources */,
