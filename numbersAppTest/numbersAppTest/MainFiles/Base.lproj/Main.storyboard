@@ -12,7 +12,7 @@
         <!--Detail View Controller-->
         <scene sceneID="VHc-Zr-vCB">
             <objects>
-                <viewController id="ABS-OW-9Mt" customClass="DetailViewController" customModule="numbersAppTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ABS-OW-9Mt" customClass="DetailViewController" customModule="numbersAppTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zYU-1t-Pc6"/>
                         <viewControllerLayoutGuide type="bottom" id="KzX-r5-IyA"/>

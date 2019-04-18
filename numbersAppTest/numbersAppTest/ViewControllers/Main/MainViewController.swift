@@ -57,7 +57,15 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.numberSelected(numbers[indexPath.row])
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
+        if splitViewController?.isCollapsed ?? false {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let detailViewController = storyBoard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+            delegate = detailViewController
+            delegate?.numberSelected(numbers[indexPath.row])
+            self.show(detailViewController, sender: nil)
+        } else {
+            delegate?.numberSelected(numbers[indexPath.row])
+        }
     }
 }
