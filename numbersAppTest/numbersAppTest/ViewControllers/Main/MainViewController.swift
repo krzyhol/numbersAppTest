@@ -10,6 +10,7 @@ import UIKit
 
 protocol MainViewControllerDelegate: class {
     func mainViewControllerCellTapped(_ number: Int)
+    func refreshAfterRotation(_ number: Int)
 }
 
 final class MainViewController: UIViewController {
@@ -34,6 +35,9 @@ final class MainViewController: UIViewController {
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         splitViewController?.enablePortainPadFullscreenMode(to: toInterfaceOrientation, for: UIDevice.current.userInterfaceIdiom)
+        let selectedIndexPath = tableView.indexPathForSelectedRow
+        guard numbers.count != 0 else { return }
+        delegate?.refreshAfterRotation(numbers[selectedIndexPath?.row ?? 0])
     }
     
     override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
@@ -46,7 +50,7 @@ final class MainViewController: UIViewController {
         let firstObjectIndexPath = IndexPath(row: 0, section: 0)
         tableView.selectRow(at: firstObjectIndexPath, animated: false, scrollPosition: .top)
 //        ToDo:
-//        delegate?.mainViewControllerCellTapped(numbers[firstObjectIndexPath.row])??
+        delegate?.mainViewControllerCellTapped(numbers[firstObjectIndexPath.row])
     }
 }
 

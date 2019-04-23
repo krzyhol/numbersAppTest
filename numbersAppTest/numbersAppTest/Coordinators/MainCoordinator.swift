@@ -37,10 +37,18 @@ class MainCoordinator {
 }
 
 extension MainCoordinator: MainViewControllerDelegate {
+    func refreshAfterRotation(_ number: Int) {
+        setNavigationFlowWithData(number)
+    }
+    
     func mainViewControllerCellTapped(_ number: Int) {
+        setNavigationFlowWithData(number)
+    }
+    
+    private func setNavigationFlowWithData(_ number: Int) {
         guard let detailViewController = detailViewController else { return }
         detailViewController.number = number
-
+        
         if UIDevice.current.userInterfaceIdiom == .pad,
             (UIDevice.current.orientation == .portrait || UIDevice.current.orientation == .portraitUpsideDown) {
             splitViewController?.setPreferredDisplayMode(.primaryHidden, animated: true)
