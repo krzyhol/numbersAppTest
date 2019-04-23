@@ -13,20 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var splitDelegate = SplitDelegate()
+    var coordinator: MainCoordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        if let splitViewController = self.window?.rootViewController as? UISplitViewController {
-            splitViewController.delegate = splitDelegate
+        guard let splitViewController = self.window?.rootViewController as? UISplitViewController else { return true }
 
-            let leftNavigationController = splitViewController.viewControllers.first as? UINavigationController
-            let mainViewController = leftNavigationController?.topViewController as? MainViewController
-            let navigationController = splitViewController.viewControllers.last as? UINavigationController
-            let detailViewController = navigationController?.topViewController as? DetailViewController
-
-            mainViewController?.delegate = detailViewController
-        }
+        coordinator = MainCoordinator(splitViewController)
+        coordinator?.prepareSplitViewController()
         
         return true
     }

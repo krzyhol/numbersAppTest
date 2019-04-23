@@ -16,7 +16,7 @@ final class DetailViewController: UIViewController {
         }
     }
     
-    private var number: Int? {
+    var number: Int? {
         didSet {
             textLabel?.text = "\(number ?? -1)"
         }
@@ -31,11 +31,5 @@ final class DetailViewController: UIViewController {
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         splitViewController?.enablePortainPadFullscreenMode(to: toInterfaceOrientation, for: UIDevice.current.userInterfaceIdiom)
-    }
-}
-
-extension DetailViewController: MainViewControllerDelegate {
-    func numberSelected(_ number: Int) {
-        self.number = number
     }
 }

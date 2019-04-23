@@ -13,12 +13,12 @@
 		51AB94B422623FC800AC9A15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51AB94B322623FC800AC9A15 /* Assets.xcassets */; };
 		51AB94B722623FC800AC9A15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51AB94B522623FC800AC9A15 /* LaunchScreen.storyboard */; };
 		51AB94C22262426E00AC9A15 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AB94C12262426E00AC9A15 /* MainViewController.swift */; };
-		51AB94C722624D0A00AC9A15 /* SplitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AB94C622624D0A00AC9A15 /* SplitDelegate.swift */; };
 		51DC84D72264F7C10014435F /* UISplitViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84D62264F7C10014435F /* UISplitViewControllerExtension.swift */; };
 		51DC84DC2267833D0014435F /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84DA2267833D0014435F /* MainCell.swift */; };
 		51DC84DD2267833D0014435F /* MainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51DC84DB2267833D0014435F /* MainCell.xib */; };
 		51DC84DF2267AC630014435F /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84DE2267AC630014435F /* UITableViewCellExtension.swift */; };
 		51DC84E12267AC8E0014435F /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84E02267AC8E0014435F /* UITableViewExtension.swift */; };
+		51DC84E9226FB4D90014435F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84E8226FB4D90014435F /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +30,12 @@
 		51AB94B622623FC800AC9A15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51AB94B822623FC800AC9A15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51AB94C12262426E00AC9A15 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		51AB94C622624D0A00AC9A15 /* SplitDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitDelegate.swift; sourceTree = "<group>"; };
 		51DC84D62264F7C10014435F /* UISplitViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISplitViewControllerExtension.swift; sourceTree = "<group>"; };
 		51DC84DA2267833D0014435F /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		51DC84DB2267833D0014435F /* MainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCell.xib; sourceTree = "<group>"; };
 		51DC84DE2267AC630014435F /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
 		51DC84E02267AC8E0014435F /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		51DC84E8226FB4D90014435F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				51AB94B822623FC800AC9A15 /* Info.plist */,
-				51AB94C322624C3800AC9A15 /* Delegates */,
+				51DC84E7226FB4A00014435F /* Coordinators */,
 				51DC84D52264F7990014435F /* Extensions */,
 				51AB94BF2262402900AC9A15 /* MainFiles */,
 				51AB94C02262404E00AC9A15 /* Resources */,
@@ -105,14 +105,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		51AB94C322624C3800AC9A15 /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				51AB94C622624D0A00AC9A15 /* SplitDelegate.swift */,
-			);
-			path = Delegates;
-			sourceTree = "<group>";
-		};
 		51DC84D52264F7990014435F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +131,14 @@
 				51DC84DB2267833D0014435F /* MainCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		51DC84E7226FB4A00014435F /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				51DC84E8226FB4D90014435F /* MainCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,12 +214,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				51AB94C22262426E00AC9A15 /* MainViewController.swift in Sources */,
-				51AB94C722624D0A00AC9A15 /* SplitDelegate.swift in Sources */,
 				51DC84DC2267833D0014435F /* MainCell.swift in Sources */,
 				51DC84E12267AC8E0014435F /* UITableViewExtension.swift in Sources */,
 				51DC84D72264F7C10014435F /* UISplitViewControllerExtension.swift in Sources */,
 				51DC84DF2267AC630014435F /* UITableViewCellExtension.swift in Sources */,
 				51AB94AF22623FC700AC9A15 /* DetailViewController.swift in Sources */,
+				51DC84E9226FB4D90014435F /* MainCoordinator.swift in Sources */,
 				51AB94AD22623FC700AC9A15 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

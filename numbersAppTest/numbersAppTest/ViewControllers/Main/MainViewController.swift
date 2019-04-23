@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MainViewControllerDelegate: class {
-    func numberSelected(_ number: Int)
+    func mainViewControllerCellTapped(_ number: Int)
 }
 
 final class MainViewController: UIViewController {
@@ -36,12 +36,17 @@ final class MainViewController: UIViewController {
         splitViewController?.enablePortainPadFullscreenMode(to: toInterfaceOrientation, for: UIDevice.current.userInterfaceIdiom)
     }
     
+    override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        splitViewController?.preferredDisplayMode = .primaryOverlay
+    }
+    
     private func selectFirstRow() {
         guard numbers.count != 0 else { return }
         
         let firstObjectIndexPath = IndexPath(row: 0, section: 0)
         tableView.selectRow(at: firstObjectIndexPath, animated: false, scrollPosition: .top)
-        delegate?.numberSelected(numbers[firstObjectIndexPath.row])
+//        ToDo:
+//        delegate?.mainViewControllerCellTapped(numbers[firstObjectIndexPath.row])??
     }
 }
 
@@ -58,14 +63,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
-        if splitViewController?.isCollapsed ?? false {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let detailViewController = storyBoard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-            delegate = detailViewController
-            delegate?.numberSelected(numbers[indexPath.row])
-            self.show(detailViewController, sender: nil)
-        } else {
-            delegate?.numberSelected(numbers[indexPath.row])
-        }
+        delegate?.mainViewControllerCellTapped(numbers[indexPath.row])
     }
 }

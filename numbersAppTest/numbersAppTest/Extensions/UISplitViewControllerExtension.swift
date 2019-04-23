@@ -22,4 +22,15 @@ extension UISplitViewController {
             self.preferredDisplayMode = .automatic
         }
     }
+    
+    // Change preferredDisplayMode with animation
+    func setPreferredDisplayMode(_ preferredDisplayMode: DisplayMode, animated: Bool) {
+        if animated {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.preferredDisplayMode = preferredDisplayMode
+            }
+        } else {
+            self.preferredDisplayMode = preferredDisplayMode
+        }
+    }
 }
