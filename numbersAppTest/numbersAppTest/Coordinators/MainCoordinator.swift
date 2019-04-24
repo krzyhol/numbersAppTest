@@ -37,17 +37,17 @@ class MainCoordinator {
 }
 
 extension MainCoordinator: MainViewControllerDelegate {
-    func refreshAfterRotation(_ number: Int) {
-        setNavigationFlowWithData(number)
+    func refreshAfterRotation(_ mainObject: MainObject) {
+        setNavigationFlowWithData(mainObject)
     }
     
-    func mainViewControllerCellTapped(_ number: Int) {
-        setNavigationFlowWithData(number)
+    func mainViewControllerCellTapped(_ mainObject: MainObject) {
+        setNavigationFlowWithData(mainObject)
     }
     
-    private func setNavigationFlowWithData(_ number: Int) {
+    private func setNavigationFlowWithData(_ mainObject: MainObject) {
         guard let detailViewController = detailViewController else { return }
-        detailViewController.number = number
+        detailViewController.mainObject = mainObject
         
         if UIDevice.current.userInterfaceIdiom == .pad,
             (UIDevice.current.orientation == .portrait || UIDevice.current.orientation == .portraitUpsideDown) {

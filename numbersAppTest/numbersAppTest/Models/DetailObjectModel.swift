@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DetailModel {
+struct DetailObject {
     let name: Int
     let text: String
     let image: URL

@@ -9,8 +9,8 @@
 import UIKit
 
 protocol MainViewControllerDelegate: class {
-    func mainViewControllerCellTapped(_ number: Int)
-    func refreshAfterRotation(_ number: Int)
+    func mainViewControllerCellTapped(_ mainObject: MainObject)
+    func refreshAfterRotation(_ mainObject: MainObject)
 }
 
 final class MainViewController: UIViewController {
@@ -42,7 +42,7 @@ final class MainViewController: UIViewController {
         splitViewController?.enablePortainPadFullscreenMode(to: toInterfaceOrientation, for: UIDevice.current.userInterfaceIdiom)
         let selectedIndexPath = tableView.indexPathForSelectedRow
         guard mainObjects.count != 0 else { return }
-        delegate?.refreshAfterRotation(mainObjects[selectedIndexPath?.row ?? 0].name)
+        delegate?.refreshAfterRotation(mainObjects[selectedIndexPath?.row ?? 0])
     }
     
     override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
@@ -54,7 +54,7 @@ final class MainViewController: UIViewController {
         
         let firstObjectIndexPath = IndexPath(row: 0, section: 0)
         tableView.selectRow(at: firstObjectIndexPath, animated: false, scrollPosition: .top)
-        delegate?.mainViewControllerCellTapped(mainObjects[firstObjectIndexPath.row].name)
+        delegate?.mainViewControllerCellTapped(mainObjects[firstObjectIndexPath.row])
     }
 }
 
@@ -72,6 +72,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
-        delegate?.mainViewControllerCellTapped(mainObjects[indexPath.row].name)
+        delegate?.mainViewControllerCellTapped(mainObjects[indexPath.row])
     }
 }
