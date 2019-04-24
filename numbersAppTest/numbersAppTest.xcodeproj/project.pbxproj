@@ -19,6 +19,8 @@
 		51DC84DF2267AC630014435F /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84DE2267AC630014435F /* UITableViewCellExtension.swift */; };
 		51DC84E12267AC8E0014435F /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84E02267AC8E0014435F /* UITableViewExtension.swift */; };
 		51DC84E9226FB4D90014435F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84E8226FB4D90014435F /* MainCoordinator.swift */; };
+		51DC84EC2270E48B0014435F /* MainObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84EB2270E48B0014435F /* MainObjectModel.swift */; };
+		51DC84EE2270E4D40014435F /* DetailObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84ED2270E4D40014435F /* DetailObjectModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		51DC84DE2267AC630014435F /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
 		51DC84E02267AC8E0014435F /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		51DC84E8226FB4D90014435F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		51DC84EB2270E48B0014435F /* MainObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainObjectModel.swift; sourceTree = "<group>"; };
+		51DC84ED2270E4D40014435F /* DetailObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailObjectModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 				51DC84E7226FB4A00014435F /* Coordinators */,
 				51DC84D52264F7990014435F /* Extensions */,
 				51AB94BF2262402900AC9A15 /* MainFiles */,
+				51DC84EA2270E3EE0014435F /* Models */,
 				51AB94C02262404E00AC9A15 /* Resources */,
 				51AB94BE2262400500AC9A15 /* ViewControllers */,
 			);
@@ -139,6 +144,15 @@
 				51DC84E8226FB4D90014435F /* MainCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		51DC84EA2270E3EE0014435F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				51DC84EB2270E48B0014435F /* MainObjectModel.swift */,
+				51DC84ED2270E4D40014435F /* DetailObjectModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,9 +232,11 @@
 				51DC84E12267AC8E0014435F /* UITableViewExtension.swift in Sources */,
 				51DC84D72264F7C10014435F /* UISplitViewControllerExtension.swift in Sources */,
 				51DC84DF2267AC630014435F /* UITableViewCellExtension.swift in Sources */,
+				51DC84EC2270E48B0014435F /* MainObjectModel.swift in Sources */,
 				51AB94AF22623FC700AC9A15 /* DetailViewController.swift in Sources */,
 				51DC84E9226FB4D90014435F /* MainCoordinator.swift in Sources */,
 				51AB94AD22623FC700AC9A15 /* AppDelegate.swift in Sources */,
+				51DC84EE2270E4D40014435F /* DetailObjectModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

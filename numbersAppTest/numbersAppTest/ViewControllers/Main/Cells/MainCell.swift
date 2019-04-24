@@ -35,8 +35,8 @@ final class MainCell: UITableViewCell {
         super.setHighlighted(highlighted, animated: animated)
     }
     
-    func decorateCell(_ data: String) {
-        titleLabel.text = data
+    func decorateCell(_ data: MainObject) {
+        titleLabel.text = String(data.name)
     }
     
     private func setCellState(highlighted: Bool = false, selected: Bool = false) {

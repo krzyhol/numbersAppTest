@@ -14,7 +14,12 @@ protocol MainViewControllerDelegate: class {
 }
 
 final class MainViewController: UIViewController {
-    private let numbers = [1, 2, 3, 4, 5]
+    private let mainObjects: [MainObject] = [
+        MainObject(name: 1, image: URL(string: "http://inu.tapptic.com/test/image.php?text=%E4%B8%80")!),
+        MainObject(name: 2, image: URL(string: "http://inu.tapptic.com/test/image.php?text=%E4%BA%8C")!),
+        MainObject(name: 3, image: URL(string: "http://inu.tapptic.com/test/image.php?text=%E4%B8%89")!),
+        MainObject(name: 4, image: URL(string: "http://inu.tapptic.com/test/image.php?text=%E5%9B%9B")!)
+    ]
     
     @IBOutlet private var tableView: UITableView! {
         didSet {
@@ -36,8 +41,8 @@ final class MainViewController: UIViewController {
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         splitViewController?.enablePortainPadFullscreenMode(to: toInterfaceOrientation, for: UIDevice.current.userInterfaceIdiom)
         let selectedIndexPath = tableView.indexPathForSelectedRow
-        guard numbers.count != 0 else { return }
-        delegate?.refreshAfterRotation(numbers[selectedIndexPath?.row ?? 0])
+        guard mainObjects.count != 0 else { return }
+        delegate?.refreshAfterRotation(mainObjects[selectedIndexPath?.row ?? 0].name)
     }
     
     override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
@@ -45,28 +50,28 @@ final class MainViewController: UIViewController {
     }
     
     private func selectFirstRow() {
-        guard numbers.count != 0 else { return }
+        guard mainObjects.count != 0 else { return }
         
         let firstObjectIndexPath = IndexPath(row: 0, section: 0)
         tableView.selectRow(at: firstObjectIndexPath, animated: false, scrollPosition: .top)
-//        ToDo:
-        delegate?.mainViewControllerCellTapped(numbers[firstObjectIndexPath.row])
+        delegate?.mainViewControllerCellTapped(mainObjects[firstObjectIndexPath.row].name)
     }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numbers.count
+        return mainObjects.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MainCell.self), for: indexPath) as? MainCell else { return UITableViewCell() }
-        cell.decorateCell("\(numbers[indexPath.row])")
+        let selectedObject = mainObjects[indexPath.row]
+        cell.decorateCell(selectedObject)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
-        delegate?.mainViewControllerCellTapped(numbers[indexPath.row])
+        delegate?.mainViewControllerCellTapped(mainObjects[indexPath.row].name)
     }
 }
