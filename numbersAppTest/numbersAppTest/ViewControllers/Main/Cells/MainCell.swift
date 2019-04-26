@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class MainCell: UITableViewCell {
 
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var numberImageView: UIImageView!
     
     private struct CellContraint {
         static let normalBackgroundColor: UIColor = .white
@@ -23,6 +25,7 @@ final class MainCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setCellState(selected: isSelected)
+        setupView()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,6 +40,13 @@ final class MainCell: UITableViewCell {
     
     func decorateCell(_ data: MainObject) {
         titleLabel.text = String(data.name)
+        numberImageView.sd_setImage(with: data.image, placeholderImage: UIImage(named: "Placeholder"), completed: nil)
+    }
+    
+    private func setupView() {
+        titleLabel.text = ""
+        numberImageView.sd_setShowActivityIndicatorView(true)
+        numberImageView.sd_setIndicatorStyle(.gray)
     }
     
     private func setCellState(highlighted: Bool = false, selected: Bool = false) {
