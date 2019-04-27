@@ -27,15 +27,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JfK-QA-pkN">
+                                <rect key="frame" x="119" y="121" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="B8P-av-auE"/>
+                                    <constraint firstAttribute="width" constant="240" id="ee5-zW-ceY"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="JfK-QA-pkN" firstAttribute="trailing" secondItem="z94-ZC-aTa" secondAttribute="trailingMargin" id="6tu-uW-qcJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cQc-Wx-gs5" secondAttribute="trailing" constant="16" id="Wz2-Wg-b2d"/>
                             <constraint firstItem="cQc-Wx-gs5" firstAttribute="top" secondItem="zYU-1t-Pc6" secondAttribute="bottom" constant="28" id="lQk-ba-UiT"/>
+                            <constraint firstItem="JfK-QA-pkN" firstAttribute="top" secondItem="cQc-Wx-gs5" secondAttribute="bottom" constant="8" id="ush-6j-YxS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="slE-P1-nnn"/>
                     <connections>
+                        <outlet property="numberImageView" destination="JfK-QA-pkN" id="Vl8-ic-lPN"/>
                         <outlet property="textLabel" destination="cQc-Wx-gs5" id="iLt-W3-D9g"/>
                     </connections>
                 </viewController>

@@ -23,9 +23,20 @@ final class DetailViewController: UIViewController {
         }
     }
     
+    @IBOutlet private weak var numberImageView: UIImageView? {
+        didSet {
+            numberImageView?.sd_setShowActivityIndicatorView(true)
+            numberImageView?.sd_setIndicatorStyle(.gray)
+            numberImageView?.sd_setImage(with: detailObject?.image, placeholderImage: UIImage(named: "Placeholder"), completed: nil)
+        }
+    }
+    
+    
     private var detailObject: DetailObject? {
         didSet {
             textLabel?.text = detailObject?.text
+            numberImageView?.image = nil
+            numberImageView?.sd_setImage(with: detailObject?.image, placeholderImage: UIImage(named: "Placeholder"), completed: nil)
         }
     }
     
