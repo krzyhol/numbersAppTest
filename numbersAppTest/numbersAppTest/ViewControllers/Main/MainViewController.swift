@@ -14,12 +14,11 @@ protocol MainViewControllerDelegate: class {
 }
 
 final class MainViewController: UIViewController {
-    private let mainObjects: [MainObject] = [
-        MainObject(name: 1, image: URL(string: "http://inu.tapptic.com/test/image.php?text=%E4%B8%80")!),
-        MainObject(name: 2, image: URL(string: "http://inu.tapptic.com/test/image.php?text=%E4%BA%8C")!),
-        MainObject(name: 3, image: URL(string: "http://inu.tapptic.com/test/image.php?text=%E4%B8%89")!),
-        MainObject(name: 4, image: URL(string: "http://inu.tapptic.com/test/image.php?text=%E5%9B%9B")!)
-    ]
+    private var mainObjects: [MainObject]? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     @IBOutlet private var tableView: UITableView! {
         didSet {
@@ -38,10 +37,16 @@ final class MainViewController: UIViewController {
         selectFirstRow()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+ 
+        getData()
+    }
+    
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         splitViewController?.enablePortainPadFullscreenMode(to: toInterfaceOrientation, for: UIDevice.current.userInterfaceIdiom)
         let selectedIndexPath = tableView.indexPathForSelectedRow
-        guard mainObjects.count != 0 else { return }
+        guard let mainObjects = mainObjects, mainObjects.count != 0 else { return }
         delegate?.refreshAfterRotation(mainObjects[selectedIndexPath?.row ?? 0])
     }
     
@@ -50,28 +55,39 @@ final class MainViewController: UIViewController {
     }
     
     private func selectFirstRow() {
-        guard mainObjects.count != 0 else { return }
-        
+        guard let mainObjects = mainObjects, mainObjects.count != 0 else { return }
+
         let firstObjectIndexPath = IndexPath(row: 0, section: 0)
         tableView.selectRow(at: firstObjectIndexPath, animated: false, scrollPosition: .top)
         delegate?.mainViewControllerCellTapped(mainObjects[firstObjectIndexPath.row])
+    }
+    
+    private func getData() {
+        NetworkingCenter().getMainObjectsList { [weak self] mainObjectsData in
+            guard let weakSelf = self, let mainObjectsData = mainObjectsData else { return }
+            weakSelf.mainObjects = mainObjectsData
+        }
     }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mainObjects.count
+        return mainObjects?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MainCell.self), for: indexPath) as? MainCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MainCell.self), for: indexPath) as? MainCell,
+            let mainObjects = mainObjects,
+            mainObjects.count != 0 else { return UITableViewCell() }
         let selectedObject = mainObjects[indexPath.row]
         cell.decorateCell(selectedObject)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let mainObjects = mainObjects,
+            mainObjects.count != 0 else { return }
         delegate?.mainViewControllerCellTapped(mainObjects[indexPath.row])
     }
 }

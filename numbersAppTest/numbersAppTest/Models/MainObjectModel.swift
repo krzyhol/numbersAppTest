@@ -9,6 +9,20 @@
 import Foundation
 
 struct MainObject {
-    let name: Int
-    let image: URL
+    let name: String?
+    let image: URL?
+    
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case image
+    }
+}
+
+extension MainObject: Decodable {
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        name = try? values.decode(String.self, forKey: .name)
+        image = try? values.decode(URL.self, forKey: .image)
+    }
 }

@@ -39,7 +39,7 @@ final class MainCell: UITableViewCell {
     }
     
     func decorateCell(_ data: MainObject) {
-        titleLabel.text = String(data.name)
+        titleLabel.text = data.name
         numberImageView.sd_setImage(with: data.image, placeholderImage: UIImage(named: "Placeholder"), completed: nil)
     }
     
