@@ -19,11 +19,10 @@ class NetworkingCenter {
             return
         }
         
-        session.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                // ToDo: Error handler
-                print(error.localizedDescription)
+        session.dataTask(with: url) { [unowned self] (data, response, error) in
+            guard self.verifyRespose(data: data, response: response, error: error) else {
                 completion(nil)
+                return
             }
             
             guard let data = data else { return }
@@ -39,5 +38,24 @@ class NetworkingCenter {
                 completion(nil)
             }
         }.resume()
+    }
+    
+    private func verifyRespose(data: Data?, response: URLResponse?, error: Error?) -> Bool {
+        if let error = error {
+            // ToDo: Error handler
+            print(error.localizedDescription)
+            return false
+        }
+        
+        if let response = response,
+            let statusCode = (response as? HTTPURLResponse)?.statusCode,
+            statusCode != 200 {
+            // ToDo: Error handler
+            let message = HTTPURLResponse.localizedString(forStatusCode: statusCode)
+            print("statusCode: \(statusCode), message: \(message)")
+            return false
+        }
+        
+        return true
     }
 }
