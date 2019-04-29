@@ -37,8 +37,8 @@ final class MainViewController: UIViewController {
         selectFirstRow()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
  
         getData()
     }
@@ -63,9 +63,12 @@ final class MainViewController: UIViewController {
     }
     
     private func getData() {
-        NetworkingCenter().getMainObjectsList { [weak self] mainObjectsData in
+        NetworkingCenter().getMainObjectsList(completion: { [weak self] mainObjectsData in
             guard let weakSelf = self, let mainObjectsData = mainObjectsData else { return }
             weakSelf.mainObjects = mainObjectsData
+        }) { [weak self] networkingError in
+            guard let weakSelf = self, let networkingError = networkingError else { return }
+            weakSelf.showErrorAlert(networkingError: networkingError)
         }
     }
 }

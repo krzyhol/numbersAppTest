@@ -23,6 +23,8 @@
 		51DC84EE2270E4D40014435F /* DetailObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84ED2270E4D40014435F /* DetailObjectModel.swift */; };
 		51DC84F12274D9280014435F /* NetworkingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84F02274D9280014435F /* NetworkingRouter.swift */; };
 		51DC84F32274DC7D0014435F /* NetworkingCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84F22274DC7D0014435F /* NetworkingCenter.swift */; };
+		51DC84F52274E9850014435F /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84F42274E9850014435F /* NetworkingError.swift */; };
+		51DC84F92274F1510014435F /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DC84F82274F1510014435F /* UIViewControllerExtension.swift */; };
 		DFEABBE61F51E5096D491D3B /* Pods_numbersAppTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F773E154A9E9BC7B999182B6 /* Pods_numbersAppTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,8 @@
 		51DC84ED2270E4D40014435F /* DetailObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailObjectModel.swift; sourceTree = "<group>"; };
 		51DC84F02274D9280014435F /* NetworkingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingRouter.swift; sourceTree = "<group>"; };
 		51DC84F22274DC7D0014435F /* NetworkingCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingCenter.swift; sourceTree = "<group>"; };
+		51DC84F42274E9850014435F /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		51DC84F82274F1510014435F /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		C6DEB15B7555E982B3190529 /* Pods-numbersAppTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-numbersAppTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-numbersAppTest/Pods-numbersAppTest.release.xcconfig"; sourceTree = "<group>"; };
 		F773E154A9E9BC7B999182B6 /* Pods_numbersAppTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_numbersAppTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8D87D5DB8781C45CC8B344F /* Pods-numbersAppTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-numbersAppTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-numbersAppTest/Pods-numbersAppTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				51DC84D62264F7C10014435F /* UISplitViewControllerExtension.swift */,
 				51DC84DE2267AC630014435F /* UITableViewCellExtension.swift */,
 				51DC84E02267AC8E0014435F /* UITableViewExtension.swift */,
+				51DC84F82274F1510014435F /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -179,8 +184,9 @@
 		51DC84EF2274D8EF0014435F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				51DC84F02274D9280014435F /* NetworkingRouter.swift */,
 				51DC84F22274DC7D0014435F /* NetworkingCenter.swift */,
+				51DC84F42274E9850014435F /* NetworkingError.swift */,
+				51DC84F02274D9280014435F /* NetworkingRouter.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -319,12 +325,14 @@
 				51DC84E12267AC8E0014435F /* UITableViewExtension.swift in Sources */,
 				51DC84D72264F7C10014435F /* UISplitViewControllerExtension.swift in Sources */,
 				51DC84DF2267AC630014435F /* UITableViewCellExtension.swift in Sources */,
+				51DC84F52274E9850014435F /* NetworkingError.swift in Sources */,
 				51DC84EC2270E48B0014435F /* MainObjectModel.swift in Sources */,
 				51AB94AF22623FC700AC9A15 /* DetailViewController.swift in Sources */,
 				51DC84E9226FB4D90014435F /* MainCoordinator.swift in Sources */,
 				51AB94AD22623FC700AC9A15 /* AppDelegate.swift in Sources */,
 				51DC84EE2270E4D40014435F /* DetailObjectModel.swift in Sources */,
 				51DC84F32274DC7D0014435F /* NetworkingCenter.swift in Sources */,
+				51DC84F92274F1510014435F /* UIViewControllerExtension.swift in Sources */,
 				51DC84F12274D9280014435F /* NetworkingRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

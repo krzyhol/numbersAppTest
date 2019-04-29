@@ -9,7 +9,7 @@
 import Foundation
 
 enum NetworkingRouter {
-    static let mainURLString = "http://dev.tapptic.com/test/json.php"
+    static let mainURLString = ""
     
     case getMainList
     case getDetails(name: String)

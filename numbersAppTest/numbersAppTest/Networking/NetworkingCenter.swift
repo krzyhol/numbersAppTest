@@ -12,18 +12,14 @@ class NetworkingCenter {
     static let configuration = URLSessionConfiguration.default
     let session = URLSession(configuration: configuration)
     
-    func getMainObjectsList(completion: @escaping ([MainObject]?) -> Void) {
+    func getMainObjectsList(completion: @escaping ([MainObject]?) -> Void, failure: @escaping (NetworkingError?) -> Void) {
         guard let url = URL(string: NetworkingRouter.getMainList.path) else {
-            // ToDo: Error handler
-            completion(nil)
+            failure(NetworkingError.wrongURLString)
             return
         }
         
         session.dataTask(with: url) { [unowned self] (data, response, error) in
-            guard self.verifyRespose(data: data, response: response, error: error) else {
-                completion(nil)
-                return
-            }
+            guard self.verifyRespose(data: data, response: response, error: error, failure: failure) else { return }
             
             guard let data = data else { return }
             do {
@@ -32,19 +28,15 @@ class NetworkingCenter {
                 DispatchQueue.main.async {
                     completion(mainObjectsData)
                 }
-            } catch let jsonError {
-                // ToDo: Error handler
-                print(jsonError)
-                completion(nil)
+            } catch _ {
+                failure(NetworkingError.parsingError)
             }
         }.resume()
     }
     
-    private func verifyRespose(data: Data?, response: URLResponse?, error: Error?) -> Bool {
+    private func verifyRespose(data: Data?, response: URLResponse?, error: Error?, failure: @escaping (NetworkingError?) -> Void) -> Bool {
         if let error = error {
-            // ToDo: Error handler
-            print(error.localizedDescription)
-            return false
+            failure(NetworkingError.connectionIssue(withMessage: error.localizedDescription))
         }
         
         if let response = response,
@@ -52,8 +44,7 @@ class NetworkingCenter {
             statusCode != 200 {
             // ToDo: Error handler
             let message = HTTPURLResponse.localizedString(forStatusCode: statusCode)
-            print("statusCode: \(statusCode), message: \(message)")
-            return false
+            failure(NetworkingError.connectionIssue(withMessage: "statusCode: \(statusCode), message: \(message)"))
         }
         
         return true
