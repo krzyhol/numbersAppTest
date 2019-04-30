@@ -14,6 +14,8 @@ final class MainCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var numberImageView: UIImageView!
     
+    static let defaultHeight: CGFloat = 60.0
+    
     private struct CellContraint {
         static let normalBackgroundColor: UIColor = .white
         static let highlightedBackgroundColor: UIColor = .blue

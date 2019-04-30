@@ -28,7 +28,6 @@
                         <rect key="frame" x="276.5" y="0.0" width="43.5" height="43.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="6Nb-RY-Ewr" secondAttribute="height" multiplier="1:1" id="1Rj-pD-cTw"/>
-                            <constraint firstAttribute="height" constant="43.5" id="VPA-1R-HL7"/>
                         </constraints>
                     </imageView>
                 </subviews>

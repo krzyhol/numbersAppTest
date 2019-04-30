@@ -18,8 +18,17 @@ class NetworkingCenter {
             return
         }
         
-        session.dataTask(with: url) { [unowned self] (data, response, error) in
-//            guard self.verifyRespose(data: data, response: response, error: error, failure: failure) else { return }
+        session.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                failure(NetworkingError.connectionIssue(withMessage: error.localizedDescription))
+            }
+            
+            if let response = response,
+                let statusCode = (response as? HTTPURLResponse)?.statusCode,
+                statusCode != 200 {
+                let message = HTTPURLResponse.localizedString(forStatusCode: statusCode)
+                failure(NetworkingError.connectionIssue(withMessage: "statusCode: \(statusCode), message: \(message)"))
+            }
             
             guard let data = data else { return }
             do {
@@ -40,8 +49,17 @@ class NetworkingCenter {
             return
         }
         
-        session.dataTask(with: url) { [unowned self] (data, response, error) in
-//            guard self.verifyRespose(data: data, response: response, error: error, failure: failure) else { return }
+        session.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                failure(NetworkingError.connectionIssue(withMessage: error.localizedDescription))
+            }
+            
+            if let response = response,
+                let statusCode = (response as? HTTPURLResponse)?.statusCode,
+                statusCode != 200 {
+                let message = HTTPURLResponse.localizedString(forStatusCode: statusCode)
+                failure(NetworkingError.connectionIssue(withMessage: "statusCode: \(statusCode), message: \(message)"))
+            }
             
             guard let data = data else { return }
             do {
@@ -54,21 +72,5 @@ class NetworkingCenter {
                 failure(NetworkingError.parsingError)
             }
         }.resume()
-    }
-    
-    private func verifyRespose(data: Data?, response: URLResponse?, error: Error?, failure: (NetworkingError?) -> Void) -> Bool {
-        if let error = error {
-            failure(NetworkingError.connectionIssue(withMessage: error.localizedDescription))
-        }
-        
-        if let response = response,
-            let statusCode = (response as? HTTPURLResponse)?.statusCode,
-            statusCode != 200 {
-            // ToDo: Error handler
-            let message = HTTPURLResponse.localizedString(forStatusCode: statusCode)
-            failure(NetworkingError.connectionIssue(withMessage: "statusCode: \(statusCode), message: \(message)"))
-        }
-        
-        return true
     }
 }

@@ -87,10 +87,10 @@
             </objects>
             <point key="canvasLocation" x="-344" y="-610"/>
         </scene>
-        <!--Splite View Controller-->
+        <!--Split View Controller-->
         <scene sceneID="fjC-r7-Jy9">
             <objects>
-                <splitViewController id="e7e-UM-pLE" customClass="SpliteViewController" customModule="numbersAppTest" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="e7e-UM-pLE" sceneMemberID="viewController">
                     <connections>
                         <segue destination="L0E-oR-Qd4" kind="relationship" relationship="masterViewController" id="uKt-Nf-rMJ"/>
                         <segue destination="2a3-ri-qwi" kind="relationship" relationship="detailViewController" id="TF8-LC-paA"/>

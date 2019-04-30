@@ -93,4 +93,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             mainObjects.count != 0 else { return }
         delegate?.mainViewControllerCellTapped(mainObjects[indexPath.row])
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return MainCell.defaultHeight
+    }
 }
