@@ -19,7 +19,7 @@ class NetworkingCenter {
         }
         
         session.dataTask(with: url) { [unowned self] (data, response, error) in
-            guard self.verifyRespose(data: data, response: response, error: error, failure: failure) else { return }
+//            guard self.verifyRespose(data: data, response: response, error: error, failure: failure) else { return }
             
             guard let data = data else { return }
             do {
@@ -34,7 +34,29 @@ class NetworkingCenter {
         }.resume()
     }
     
-    private func verifyRespose(data: Data?, response: URLResponse?, error: Error?, failure: @escaping (NetworkingError?) -> Void) -> Bool {
+    func getDetailsForNumber(number: String, completion: @escaping (DetailObject?) -> Void, failure: @escaping (NetworkingError?) -> Void) {
+        guard let url = URL(string: NetworkingRouter.getDetails(name: number).path) else {
+            failure(NetworkingError.wrongURLString)
+            return
+        }
+        
+        session.dataTask(with: url) { [unowned self] (data, response, error) in
+//            guard self.verifyRespose(data: data, response: response, error: error, failure: failure) else { return }
+            
+            guard let data = data else { return }
+            do {
+                let detailObject = try JSONDecoder().decode(DetailObject.self, from: data)
+                
+                DispatchQueue.main.async {
+                    completion(detailObject)
+                }
+            } catch _ {
+                failure(NetworkingError.parsingError)
+            }
+        }.resume()
+    }
+    
+    private func verifyRespose(data: Data?, response: URLResponse?, error: Error?, failure: (NetworkingError?) -> Void) -> Bool {
         if let error = error {
             failure(NetworkingError.connectionIssue(withMessage: error.localizedDescription))
         }

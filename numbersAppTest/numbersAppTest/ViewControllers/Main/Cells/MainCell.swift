@@ -20,6 +20,7 @@ final class MainCell: UITableViewCell {
         static let selectedBackgroundColor: UIColor = .red
         static let normalTextColor: UIColor = .black
         static let highlightedAndSelectedTextColor: UIColor = .white
+        static let placeholderImage = UIImage(named: "Placeholder")
     }
     
     override func awakeFromNib() {
@@ -39,8 +40,8 @@ final class MainCell: UITableViewCell {
     }
     
     func decorateCell(_ data: MainObject) {
-        titleLabel.text = data.name
-        numberImageView.sd_setImage(with: data.image, placeholderImage: UIImage(named: "Placeholder"), completed: nil)
+        titleLabel.text = data.number
+        numberImageView.sd_setImage(with: data.imageURL, placeholderImage: CellContraint.placeholderImage, completed: nil)
     }
     
     private func setupView() {

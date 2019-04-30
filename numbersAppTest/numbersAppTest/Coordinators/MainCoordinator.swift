@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainCoordinator {
+final class MainCoordinator {
     private var splitViewController: UISplitViewController?
     private var mainViewController: MainViewController?
     private var detailViewController: DetailViewController?
@@ -17,7 +17,7 @@ class MainCoordinator {
         self.splitViewController = splitViewController
     }
     
-    func prepareSplitViewController() {
+    func start() {
         guard let splitViewController = splitViewController else { return }
         
         splitViewController.delegate = self
@@ -46,8 +46,8 @@ extension MainCoordinator: MainViewControllerDelegate {
     }
     
     private func setNavigationFlowWithData(_ mainObject: MainObject) {
-        guard let detailViewController = detailViewController else { return }
-        detailViewController.mainObject = mainObject
+        guard let detailViewController = detailViewController, let number = mainObject.number else { return }
+        detailViewController.number = number
         
         if UIDevice.current.userInterfaceIdiom == .pad,
             (UIDevice.current.orientation == .portrait || UIDevice.current.orientation == .portraitUpsideDown) {

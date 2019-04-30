@@ -10,13 +10,6 @@ import UIKit
 
 final class DetailViewController: UIViewController {
     
-    let mockDetailObjects: [String: DetailObject] = [
-        "1" : DetailObject(name: 1, text: "Ichi", image: URL(string: "http://inu.tapptic.com/test/image.php?text=%E4%B8%80&size=60")!),
-        "2" : DetailObject(name: 2, text: "Ni", image: URL(string: "http://inu.tapptic.com/test/image.php?text=%E4%BA%8C&size=60")!),
-        "3" : DetailObject(name: 3, text: "San", image: URL(string: "http://inu.tapptic.com/test/image.php?text=%E4%B8%89&size=60")!),
-        "4" : DetailObject(name: 4, text: "Shi/ Yon", image: URL(string: "http://inu.tapptic.com/test/image.php?text=%E5%9B%9B&size=60")!)
-    ]
-    
     @IBOutlet private weak var textLabel: UILabel? {
         didSet {
             textLabel?.text = detailObject?.text
@@ -27,23 +20,26 @@ final class DetailViewController: UIViewController {
         didSet {
             numberImageView?.sd_setShowActivityIndicatorView(true)
             numberImageView?.sd_setIndicatorStyle(.gray)
-            numberImageView?.sd_setImage(with: detailObject?.image, placeholderImage: UIImage(named: "Placeholder"), completed: nil)
+            numberImageView?.sd_setImage(with: detailObject?.imageURL, placeholderImage: ViewContraint.placeholderImage)
         }
     }
-    
     
     private var detailObject: DetailObject? {
         didSet {
             textLabel?.text = detailObject?.text
             numberImageView?.image = nil
-            numberImageView?.sd_setImage(with: detailObject?.image, placeholderImage: UIImage(named: "Placeholder"), completed: nil)
+            numberImageView?.sd_setImage(with: detailObject?.imageURL, placeholderImage: ViewContraint.placeholderImage)
         }
     }
     
-    var mainObject: MainObject? {
+    var number: String? {
         didSet {
-            detailObject = mockDetailObjects[mainObject?.name ?? "1"]
+            getData()
         }
+    }
+    
+    private struct ViewContraint {
+        static let placeholderImage = UIImage(named: "Placeholder")
     }
     
     override func viewDidLoad() {
@@ -55,5 +51,17 @@ final class DetailViewController: UIViewController {
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         splitViewController?.enablePortainPadFullscreenMode(to: toInterfaceOrientation, for: UIDevice.current.userInterfaceIdiom)
+    }
+    
+    private func getData() {
+        guard let number = number else { return }
+        
+        NetworkingCenter().getDetailsForNumber(number: number, completion: { [weak self] detailObjectData in
+            guard let weakSelf = self, let detailObjectData = detailObjectData else { return }
+            weakSelf.detailObject = detailObjectData
+        }) { [weak self] networkingError in
+            guard let weakSelf = self, let networkingError = networkingError else { return }
+            weakSelf.showErrorAlert(networkingError: networkingError)
+        }
     }
 }

@@ -12,7 +12,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
     var coordinator: MainCoordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -20,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let splitViewController = self.window?.rootViewController as? UISplitViewController else { return true }
 
         coordinator = MainCoordinator(splitViewController)
-        coordinator?.prepareSplitViewController()
+        coordinator?.start()
         
         return true
     }

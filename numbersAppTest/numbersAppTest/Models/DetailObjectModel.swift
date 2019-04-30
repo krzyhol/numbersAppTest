@@ -9,7 +9,23 @@
 import Foundation
 
 struct DetailObject {
-    let name: Int
-    let text: String
-    let image: URL
+    let number: String?
+    let text: String?
+    let imageURL: URL?
+    
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case text
+        case image
+    }
+}
+
+extension DetailObject: Decodable {
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        number = try? values.decode(String.self, forKey: .name)
+        text = try? values.decode(String.self, forKey: .text)
+        imageURL = try? values.decode(URL.self, forKey: .image)
+    }
 }
