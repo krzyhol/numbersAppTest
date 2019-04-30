@@ -68,7 +68,9 @@ final class MainViewController: UIViewController {
             weakSelf.mainObjects = mainObjectsData
         }) { [weak self] networkingError in
             guard let weakSelf = self, let networkingError = networkingError else { return }
-            weakSelf.showErrorAlert(networkingError: networkingError)
+            weakSelf.showErrorAlert(networkingError: networkingError, retry: { [weak self] in
+                self?.getData()
+            })
         }
     }
 }

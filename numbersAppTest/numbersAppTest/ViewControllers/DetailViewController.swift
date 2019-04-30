@@ -61,7 +61,9 @@ final class DetailViewController: UIViewController {
             weakSelf.detailObject = detailObjectData
         }) { [weak self] networkingError in
             guard let weakSelf = self, let networkingError = networkingError else { return }
-            weakSelf.showErrorAlert(networkingError: networkingError)
+            weakSelf.showErrorAlert(networkingError: networkingError, retry: { [weak self] in
+                self?.getData()
+            })
         }
     }
 }
